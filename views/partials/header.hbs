@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li>
+                <a href="/">𝑯𝑶𝑴𝑬</a>
+            </li>
+            <li>
+                <a href="/menu">𝑶𝑹𝑫𝑬𝑹 𝑶𝑵𝑳𝑰𝑵𝑬</a>
+            </li>
+            <li>
+                
+            </li>
+        </ul>
+        <ul>
+            {{#if login}}
+            <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> {{user.firstname}}</a></li>
+            <li><a href="/user/logout">Logout</a></li>
+            {{else}}
+            <li id="signin"><a href="/user/signin"><i class="fa fa-user" aria-hidden="true"></i>  𝑺𝑰𝑮𝑵 𝑰𝑵</a></li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>

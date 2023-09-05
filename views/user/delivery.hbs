@@ -1,0 +1,28 @@
+<div class="page page-delivery">
+    <div class="container">
+        <h1>MOVE MAP TO SET LOCATION</h1>
+        <form method="post" action="/user/edit-address">
+            <div class="map">
+                <input id="map-search" class="form-control" type="text" name="address" placeholder="Enter delivery address" size="104">
+                <div>
+                    <p class="distance">Status :</p>
+                </div>
+                <div id="liveAlertPlaceholder"></div>
+                <div id="map-canvas"></div>
+                <button class="btn btn-primary" id="liveAlertBtn" type="button">CONFIRM</button>
+                <a href="{{redirectUrl}}" class="btn btn-secondary">Cancel</button></a>
+            </div>
+            <div class="hidden">
+                <label for="">Lat: <input type="text" class="latitude" name="latitude"></label>
+                <label for="">Long: <input type="text" class="longitude" name="longitude"></label>
+                <input type="Charleston,WV" class="reg-input-city" />
+                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src='/stylesheets/delivery.js'></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhFjLxZScysJdR5mWnRR6HS27PaQ7qDT4&libraries=places&callback=initialize"></script>

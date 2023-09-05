@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Dashboard Template · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link href="/stylesheets/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-responsive {
+            padding: 1em 0 1em 0;
+        }
+
+        img {
+            width: 80px;
+        }
+
+        .choice-container {
+            display: flex;
+            gap: 10px
+        }
+
+        .remove-btn {
+            margin-left: 0.5em;
+        }
+
+        .Available{
+            background-color:#C6E1C6 ;
+            color: #678F30;
+        }
+         .Not-Available{
+            background-color:#dfb3b3 ;
+            color: #8d0707;
+        }
+    </style>
+
+
+    <!-- Custoxm styles for this template -->
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Pye Boat Noodle</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
+            aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="#">Sign out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/admin">
+                                <span data-feather="home" class="align-text-bottom"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/orders">
+                                <span data-feather="file" class="align-text-bottom"></span>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/products">
+                                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users">
+                                <span data-feather="users" class="align-text-bottom"></span>
+                                Customers
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                        <span>Navigation</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle" class="align-text-bottom"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text" class="align-text-bottom"></span>
+                                Menu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text" class="align-text-bottom"></span>
+                                Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                 <nav aria-label="breadcrumb" class="mt-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Products</h1>
+                    
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        
+                        <div class="btn-group me-2">
+                            
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            <span data-feather="calendar" class="align-text-bottom"></span>
+                            This week
+                        </button>
+                    </div>
+                </div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Add New Products</button>
+
+                <div class="table-responsive">
+                    <table class="display" id="myTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <td class="d-flex justify-content-center">
+                                    <img src="{{ this.imagePath.[0] }}" class="img-fluid rounded-start"
+                                        alt="{{this.title}}">
+                                </td>
+                                <td>{{this.title}}</td>
+                                <td>${{this.price}}</td>
+                                <td>{{this.category}}</td>
+
+                                <td>
+                                    <p style="display:none">{{this.status}}</p>
+                                    <form method="POST" action="/admin/product-status">
+                                        <input type="hidden" value="{{this._id}}" name="_id">
+                                        <input type="hidden" value="{{this.category}}" id="{{this._id}}-statusCategory">
+                                        <input type="hidden" value="{{this.status}}" id="{{this._id}}-status">
+                                        <select class="form-control form-select updateStatusForm {{this.status}}" id="{{this._id}}-statusSelect" name="status">
+                                            <option value="Available">Available</option>
+                                            <option value="Not-Available">Not Available</option>
+                                        </select>
+                                    </form>
+                                </td>
+
+                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#editProductModal_{{this._id}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+</svg>
+                                    </a>
+                                </td>
+                                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#deleteProductModal_{{this._id}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16" style="color:red">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    {{!-- Create Product --}}
+    <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
+        <form id="createProductForm" method="post" action="/admin/add-product/" enctype="multipart/form-data">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="createProductModalLabel">Create Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="title" class="form-label">Title:</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description" required></textarea>
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price" required>
+                        <label for="category">Category</label>
+                        <select name="category" class="form-control form-select" id="category" aria-label="Default select example">
+                            <option value="PYE OVER RICE">PYE OVER RICE</option>
+                            <option value="PYE SNACKS">PYE SNACKS</option>
+                            <option value="PYE BOAT NOODLES">PYE BOAT NOODLES</option>
+                            <option value="PYE DRY NOODLES">PYE DRY NOODLES</option>
+                            <option value="J SNACKS">J SNACKS</option>
+                            <option value="DESERT">DESERT</option>
+                            <option value="DRINK">DRINK</option>
+                        </select>
+                        <label for="formFile">Image</label>
+                        <input class="form-control" type="file" id="formFile" name="sampleFile" accept="image/*" required>
+                        <label for="status">Status</label>
+                        <select name="status" class="form-control form-select" id="status" aria-label="Default select example">
+                            <option value="Available">Available</option>
+                            <option value="Not-Available">Not Available</option>
+                        </select>
+                        <button class="btn btn-primary mt-3"type="button" id="addNewAdditionalChoiceBtn" onclick="addNewAdditionalChoice()">Add Additional Choice</button><br>
+                        <div class="card mt-3">
+                            <div id="additionalChoicesContainer" class="card-body">
+                        </div>
+                    </div>               
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="createProductForm">Save</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    {{!-- End Create Product --}}
+
+    {{#each products}}
+    <!-- Modal -->
+    <div class="modal fade" id="editProductModal_{{this._id}}" tabindex="-1"
+        aria-labelledby="editProductModalLabel_{{this._id}}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel_{{this._id}}">Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm_{{this._id}}" method="post" action="/admin/edit-products">
+                        <input type="hidden" name="_id" value="{{this._id}}">
+                        <label for="title_{{this._id}}" class="form-label">Title:</label>
+                        <input type="text" class="form-control" id="title_{{this._id}}" name="title"
+                            value="{{this.title}}" required>
+
+                        <label for="description_{{this._id}}" class="form-label">Description:</label>
+                        <textarea class="form-control" id="description_{{this._id}}" name="description"
+                            required>{{this.description}}</textarea>
+
+                        <label for="price_{{this._id}}" class="form-label">Price:</label>
+                        <input type="number" class="form-control" id="price_{{this._id}}" name="price"
+                            value="{{this.price}}" required>
+
+                        <label for="{{this._id}}-categorySelect">Category</label>
+                        <select id="{{this._id}}-categorySelect" name="category" class="form-control form-select" >
+                            <option value="PYE OVER RICE">PYE OVER RICE</option>
+                            <option value="PYE SNACKS">PYE SNACKS</option>
+                            <option value="PYE BOAT NOODLES">PYE BOAT NOODLES</option>
+                            <option value="PYE DRY NOODLES">PYE DRY NOODLES</option>
+                            <option value="J SNACKS">J SNACKS</option>
+                            <option value="DESERT">DESERT</option>
+                            <option value="DRINK">DRINK</option>
+                        </select>
+
+                        <button type="button" class="btn btn-primary mt-3"
+                            onclick="addAdditionalChoice('{{this._id}}')">Add Additional Choice</button>
+
+                        <div id="additionalChoicesContainer_{{this._id}}" class="card card-body mt-3">
+                            {{#each this.additionalChoices}}
+                            <div class="additional-choice-container additional-choice-container_{{../this._id}}">
+                                <input type="text" class="form-control mb-2" value="{{this.title}}" required>
+                                <button type="button" class="btn btn-secondary mb-2"
+                                    onclick="addChoice(this.parentNode)">Add Choice</button>
+                                <button type="button" class="btn btn-danger mb-2 remove-btn"
+                                    onclick="this.parentNode.remove()">Remove</button>
+
+                                {{#if this.choices}}
+                                {{#each this.choices}}
+                                <div class="choice-container">
+                                    <input type="text" class="form-control mb-2" value="{{this}}" required>
+                                    <input type="number" class="form-control mb-2" value="{{lookup ../prices @index}}"
+                                        required>
+                                    <button type="button" class="btn btn-danger mb-2"
+                                        onclick="this.parentNode.remove()">Remove</button>
+                                </div>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+     <!-- Modal -->
+    <div class="modal fade" id="deleteProductModal_{{this._id}}" tabindex="-1"
+        aria-labelledby="deleteProductModalLabel_{{this._id}}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete  <strong>"{{this.title}}"</strong></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <p>Are you sure that you want to delete <strong>"{{this.title}}"</strong> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="/admin/delete-product/{{this._id}}"><button type="submit" class="btn btn-danger">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    {{/each}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    <script>
+        var dropdowns = document.querySelectorAll('.form-control');
+
+        dropdowns.forEach(function (dropdown) {
+            if (dropdown.tagName === 'SELECT') {
+
+                var orderId = dropdown.id.split('-')[0];
+
+                if(orderId !== "category" && orderId !== "status"){
+                    var selectedValue = document.getElementById(`${orderId}-status`).value;
+                    var selectedValue1 = document.getElementById(`${orderId}-statusCategory`).value;
+
+
+                    var options = dropdown.options;
+
+                    for (var i = 0; i < options.length; i++) {
+                        if ((options[i].value === selectedValue) || (options[i].value === selectedValue1)) {
+                            options[i].selected = true;
+                            break;
+                        }
+                    }
+                }
+               
+            }
+        });
+        document.querySelectorAll(".updateStatusForm").forEach(function(select) {
+                select.addEventListener("change", function() {
+                    var form = select.closest("form");
+                    form.submit();
+                });
+        });
+
+    </script>
+    <script>
+        // Handle form submission for each product form
+        {{#each products}}
+        document.getElementById("productForm_{{this._id}}").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var title = document.getElementById("title_{{this._id}}").value;
+            var description = document.getElementById("description_{{this._id}}").value;
+            var additionalChoices = [];
+
+            var additionalChoiceContainers = document.getElementsByClassName("additional-choice-container_{{this._id}}");
+            for (var i = 0; i < additionalChoiceContainers.length; i++) {
+                var additionalChoiceTitleInput = additionalChoiceContainers[i].querySelector("input[type='text']");
+                var choiceContainers = additionalChoiceContainers[i].getElementsByClassName("choice-container");
+                var choices = [];
+                var prices = [];
+
+                for (var j = 0; j < choiceContainers.length; j++) {
+                    var choiceNameInput = choiceContainers[j].querySelector("input[type='text']");
+                    var choicePriceInput = choiceContainers[j].querySelector("input[type='number']");
+                    choices.push(choiceNameInput.value);
+                    prices.push(parseFloat(choicePriceInput.value));
+                }
+                var additionalChoice = {
+                    title: additionalChoiceTitleInput.value,
+                    choices: choices,
+                    prices: prices
+                };
+                additionalChoices.push(additionalChoice);
+            }
+
+            // Create a hidden input field to hold the additionalChoices data
+            var additionalChoicesInput = document.createElement("input");
+            additionalChoicesInput.type = "hidden";
+            additionalChoicesInput.name = "additionalChoices";
+            additionalChoicesInput.value = JSON.stringify(additionalChoices);
+
+            // Append the hidden input field to the form
+            document.getElementById("productForm_{{this._id}}").appendChild(additionalChoicesInput);
+
+            // Submit the form
+            document.getElementById("productForm_{{this._id}}").submit();
+        });
+        {{/each}}
+            // Function to add a new additional choice section
+            function addAdditionalChoice(productId) {
+                var container = document.getElementById("additionalChoicesContainer_" + productId);
+                var additionalChoiceContainer = document.createElement("div");
+                additionalChoiceContainer.className = "additional-choice-container additional-choice-container_" + productId;
+                var additionalChoiceTitleInput = document.createElement("input");
+                additionalChoiceTitleInput.type = "text";
+                additionalChoiceTitleInput.className = "form-control mb-2 Additional-Title choice-title";
+                additionalChoiceTitleInput.placeholder = "Additional Choice Title";
+                additionalChoiceTitleInput.required = true;
+                var addChoiceBtn = document.createElement("button");
+                addChoiceBtn.type = "button";
+                addChoiceBtn.className = "btn btn-secondary mb-2";
+                addChoiceBtn.textContent = "Add Choice";
+                addChoiceBtn.onclick = function () {
+                    addChoice(additionalChoiceContainer);
+                };
+                var removeAdditionalChoiceBtn = document.createElement("button");
+                removeAdditionalChoiceBtn.type = "button";
+                removeAdditionalChoiceBtn.className = "btn btn-danger mb-2 remove-btn";
+                removeAdditionalChoiceBtn.textContent = "Remove";
+                removeAdditionalChoiceBtn.onclick = function () {
+                    additionalChoiceContainer.remove();
+                };
+                additionalChoiceContainer.appendChild(additionalChoiceTitleInput);
+                additionalChoiceContainer.appendChild(addChoiceBtn);
+                additionalChoiceContainer.appendChild(removeAdditionalChoiceBtn);
+                container.appendChild(additionalChoiceContainer);
+                // Add an initial choice for the new additional choice section
+                addChoice(additionalChoiceContainer);
+                var hrElement = document.createElement('hr');
+                container.appendChild(hrElement)
+            }
+            // Function to add a new choice input field within an additional choice
+            function addChoice(additionalChoiceContainer) {
+                var choiceContainer = document.createElement("div");
+                choiceContainer.className = "choice-container";
+                var choiceNameInput = document.createElement("input");
+                choiceNameInput.type = "text";
+                choiceNameInput.className = "form-control mb-2";
+                choiceNameInput.placeholder = "Choice Name";
+                choiceNameInput.required = true;
+                var choicePriceInput = document.createElement("input");
+                choicePriceInput.type = "number";
+                choicePriceInput.className = "form-control mb-2";
+                choicePriceInput.placeholder = "Choice Price";
+                choicePriceInput.required = true;
+                var removeChoiceBtn = document.createElement("button");
+                removeChoiceBtn.type = "button";
+                removeChoiceBtn.className = "btn btn-danger mb-2";
+                removeChoiceBtn.textContent = "Remove";
+                removeChoiceBtn.onclick = function () {
+                    choiceContainer.remove();
+                };
+                choiceContainer.appendChild(choiceNameInput);
+                choiceContainer.appendChild(choicePriceInput);
+                choiceContainer.appendChild(removeChoiceBtn);
+                additionalChoiceContainer.appendChild(choiceContainer);
+            }
+    </script>
+     <script>
+    // Function to add a new additional choice section
+    function addNewAdditionalChoice() {
+      var container = document.getElementById("additionalChoicesContainer");
+
+      var additionalChoiceContainer = document.createElement("div");
+      additionalChoiceContainer.className = "additional-choice-container-create";
+
+      var additionalChoiceTitleInput = document.createElement("input");
+      additionalChoiceTitleInput.type = "text";
+      additionalChoiceTitleInput.className =  "form-control mb-2 Additional-Title choice-title";
+      additionalChoiceTitleInput.placeholder = "Additional Choice Title";
+      additionalChoiceTitleInput.required = true;
+
+      var addChoiceBtn = document.createElement("button");
+      addChoiceBtn.type = "button";
+      addChoiceBtn.className = "btn btn-secondary mb-2"
+      addChoiceBtn.textContent = "Add Choice";
+      addChoiceBtn.onclick = function() {
+        addChoiceToAdditionalChoice(additionalChoiceContainer);
+      };
+
+      var removeAdditionalChoiceBtn = document.createElement("button");
+      removeAdditionalChoiceBtn.type = "button";
+      removeAdditionalChoiceBtn.className = "btn btn-danger remove-btn mb-2"
+      removeAdditionalChoiceBtn.textContent = "Remove";
+      removeAdditionalChoiceBtn.onclick = function() {
+        additionalChoiceContainer.remove();
+      };
+
+      additionalChoiceContainer.appendChild(additionalChoiceTitleInput);
+      additionalChoiceContainer.appendChild(addChoiceBtn);
+      additionalChoiceContainer.appendChild(removeAdditionalChoiceBtn);
+
+      container.appendChild(additionalChoiceContainer);
+
+      // Add an initial choice for the new additional choice section
+      addChoiceToAdditionalChoice(additionalChoiceContainer);
+      var hrElement = document.createElement('hr');
+                container.appendChild(hrElement)
+    }
+
+    // Function to add a new choice input field within an additional choice
+    function addChoiceToAdditionalChoice(additionalChoiceContainer) {
+      var choiceContainer = document.createElement("div");
+      choiceContainer.className = "choice-container";
+
+      var choiceNameInput = document.createElement("input");
+      choiceNameInput.type = "text";
+      choiceNameInput.placeholder = "Choice Name";
+      choiceNameInput.className = "form-control mb-2";
+      choiceNameInput.required = true;
+
+      var choicePriceInput = document.createElement("input");
+      choicePriceInput.type = "number";
+      choicePriceInput.placeholder = "Choice Price";
+      choicePriceInput.className = "form-control mb-2";
+      choicePriceInput.required = true;
+
+      var removeChoiceBtn = document.createElement("button");
+      removeChoiceBtn.type = "button";
+      removeChoiceBtn.textContent = "Remove";
+      removeChoiceBtn.className = "btn btn-danger mb-2";
+      removeChoiceBtn.onclick = function() {
+        choiceContainer.remove();
+      };
+
+      choiceContainer.appendChild(choiceNameInput);
+      choiceContainer.appendChild(choicePriceInput);
+      choiceContainer.appendChild(removeChoiceBtn);
+
+      additionalChoiceContainer.appendChild(choiceContainer);
+    }
+
+    document.getElementById("createProductForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var title = document.getElementById("title").value;
+        var description = document.getElementById("description").value;
+        var additionalChoices = [];
+
+        var additionalChoiceContainers = document.getElementsByClassName("additional-choice-container-create");
+        for (var i = 0; i < additionalChoiceContainers.length; i++) {
+            var additionalChoiceTitleInput = additionalChoiceContainers[i].querySelector("input[type='text']");
+            var choiceContainers = additionalChoiceContainers[i].getElementsByClassName("choice-container");
+            var choices = [];
+            var prices = [];
+
+            for (var j = 0; j < choiceContainers.length; j++) {
+            var choiceNameInput = choiceContainers[j].querySelector("input[type='text']");
+            var choicePriceInput = choiceContainers[j].querySelector("input[type='number']");
+
+            choices.push(choiceNameInput.value);
+            prices.push(parseFloat(choicePriceInput.value));
+            }
+
+            var additionalChoice = {
+            title: additionalChoiceTitleInput.value,
+            choices: choices,
+            prices: prices
+            };
+
+            additionalChoices.push(additionalChoice);
+        }
+
+        // Create a hidden input field to hold the additionalChoices data
+        var additionalChoicesInput = document.createElement("input");
+        additionalChoicesInput.type = "hidden";
+        additionalChoicesInput.name = "additionalChoices";
+        additionalChoicesInput.value = JSON.stringify(additionalChoices);
+
+        // Append the hidden input field to the form
+        document.getElementById("createProductForm").appendChild(additionalChoicesInput);
+
+        // Submit the form
+        document.getElementById("createProductForm").submit();
+    });
+
+  </script>
+</body>
+
+</html>
